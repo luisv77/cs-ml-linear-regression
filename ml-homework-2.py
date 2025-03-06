@@ -21,10 +21,9 @@ points = [
 
 def printPoints(points):
 
-    i = 0
-    for x, y in points:
+    
+    for i, (x, y) in enumerate(points):
         print(f"x[ {i}] = {x} y[ {i}] = {y}")
-        i += 1
 
 def getSlopesAndIntercepts(p):
 
