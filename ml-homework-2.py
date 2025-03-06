@@ -38,13 +38,11 @@ def get_slopes_and_intercepts(points):
     return slopes, intercepts
 
         
-def yhat(points, slopeAvg, interceptAvg):
+def y_hat(points, slopeAvg, interceptAvg):
 
-    i = 0
-    for xi, yi in points:
-        y_hat = (slopeAvg * xi) + interceptAvg
-        print(f"yhat[ {i}] = {y_hat:.2f}, y[ {i}] = {yi:.2f}")
-        i += 1
+    for i, (xi, yi) in enumerate(points):
+        y_hat_val = (slopeAvg * xi) + interceptAvg
+        print(f"yhat[ {i}] = {y_hat_val:.2f}, y[ {i}] = {yi:.2f}")
 
 def mse(points, m, b):
 
@@ -91,7 +89,7 @@ print(f"\nSlope Estimate = {slopeAvg:.2f}")
 print(f"Intercept Estimate = {interceptAvg:.2f}")
 
 print("")
-yhat(points, slopeAvg, interceptAvg)
+y_hat(points, slopeAvg, interceptAvg)
 
 print("")
 
