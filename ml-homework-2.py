@@ -7,15 +7,18 @@ y = mx + b
 
 points = [
     #  0         1
-    (-20.00, -69.00), # 0
-    (-10.00, -36.00), # 1
-    (-5.00, -20.00), # 2
-    (0.00, -8.00), # 3
-    (4.00, 6.00), # 4
-    (9.00, 21.00), # 5
-    (15.00, 35.00), # 6
-    (30.00, 81.00) # 7
+    (0.00, -8.00), 
+    (-10.00, -36.00), 
+    (9.00, 21.00),
+    (-5.00, -20.00),
+    (4.00, 6.00),
+    (15.00, 35.00), 
+    (30.00, 81.00),
+    (-20.00, -69.00)
 ]
+
+# sort by x value
+points.sort()
 
 def printPoints(points):    
     for i, (x, y) in enumerate(points):
@@ -41,7 +44,7 @@ def y_hat(points, slopeAvg, interceptAvg):
 
 def mse(points, m, b):
     squared_error_sum = sum( ( (m*x + b) - y )**2 for x, y in points )
-    print(f"Mean Squared Error = {squared_error_sum / len(points):.6f}")
+    print(f"\nMean Squared Error = {squared_error_sum / len(points):.6f}")
 
 """
 
@@ -49,21 +52,23 @@ function calls
 
 """
 
+print("After sorting the dataset of 8 points:")
 printPoints(points)
-print("")
 
 slopes, intercepts = get_slopes_and_intercepts(points)
 
+print("\nThe pairwise slopes and Intercepts:")
 for i, (m, b) in enumerate(zip(slopes, intercepts)):
     print(f"m[{i}] = {m:.2f} b[{i}] = {b:.2f}")    
 
 slopeAvg =  sum(slopes) / len(slopes)
 interceptAvg = sum(intercepts) / len(intercepts)
 
-print(f"\nSlope Estimate = {slopeAvg:.2f}")
-print(f"Intercept Estimate = {interceptAvg:.2f}\n")
+print("\nThe model parameters obtained by the program:")
+print(f"Slope Estimate = {slopeAvg:.2f}")
+print(f"Intercept Estimate = {interceptAvg:.2f}")
 
-
+print("\nThe discrepancies between the model predictions and the actual values of the dataset:")
 y_hat(points, slopeAvg, interceptAvg)
-print("")
+
 mse(points, slopeAvg, interceptAvg)
