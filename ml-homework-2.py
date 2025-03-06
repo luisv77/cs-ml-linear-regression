@@ -19,9 +19,7 @@ points = [
     (30.00, 81.00) # 7
 ]
 
-def printPoints(points):
-
-    
+def printPoints(points):    
     for i, (x, y) in enumerate(points):
         print(f"x[ {i}] = {x} y[ {i}] = {y}")
 
@@ -39,23 +37,13 @@ def get_slopes_and_intercepts(points):
 
         
 def y_hat(points, slopeAvg, interceptAvg):
-
     for i, (xi, yi) in enumerate(points):
         y_hat_val = (slopeAvg * xi) + interceptAvg
         print(f"yhat[ {i}] = {y_hat_val:.2f}, y[ {i}] = {yi:.2f}")
 
 def mse(points, m, b):
-
-    squared_error_sum = 0
-    
-    for x, y in points:
-        
-        y_hat = (m * x) + b
-        squared_error_sum += pow(y_hat - y,2)
-
-    mse = squared_error_sum / len(points)
-
-    print(f"Mean Squared Error = {mse:.6f}")
+    squared_error_sum = sum( ( (m*x + b) - y )**2 for x, y in points )
+    print(f"Mean Squared Error = {squared_error_sum / len(points):.6f}")
 
 """
 
