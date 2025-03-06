@@ -3,8 +3,6 @@
 2. find the average ms and bs
 3. find mean squared error (MSE), given forula on instructions
 y = mx + b
-
-
 """
 
 points = [
@@ -56,29 +54,16 @@ print("")
 
 slopes, intercepts = get_slopes_and_intercepts(points)
 
-
-slopeAvg = 0
-interceptAvg = 0
-
 for i, (m, b) in enumerate(zip(slopes, intercepts)):
-    print(f"m[{i}] = {m:.2f} b[{i}] = {b:.2f}")
-    slopeAvg += m
-    interceptAvg += b
-    
+    print(f"m[{i}] = {m:.2f} b[{i}] = {b:.2f}")    
 
-slopeAvg /= len(slopes)
-
-interceptAvg /= len(intercepts)
-
-
+slopeAvg =  sum(slopes) / len(slopes)
+interceptAvg = sum(intercepts) / len(intercepts)
 
 print(f"\nSlope Estimate = {slopeAvg:.2f}")
+print(f"Intercept Estimate = {interceptAvg:.2f}\n")
 
-print(f"Intercept Estimate = {interceptAvg:.2f}")
 
-print("")
 y_hat(points, slopeAvg, interceptAvg)
-
 print("")
-
 mse(points, slopeAvg, interceptAvg)
