@@ -25,15 +25,10 @@ def printPoints(points):
     for i, (x, y) in enumerate(points):
         print(f"x[ {i}] = {x} y[ {i}] = {y}")
 
-def getSlopesAndIntercepts(p):
-
-    slopes = []
-    intercepts = []
+def get_slopes_and_intercepts(points):
+    slopes, intercepts = [], []
     
-    for i in range(len(p) - 1):
-        xi, yi = p[i]
-        xj, yj = p[i + 1]
-
+    for (xi, yi), (xj, yj) in zip(points, points[1:]):
         m = (yi - yj) / (xi - xj)
         b = (xi*yj - xj*yi) / (xi - xj)
         
@@ -73,7 +68,7 @@ function calls
 printPoints(points)
 print("")
 
-slopes, intercepts = getSlopesAndIntercepts(points)
+slopes, intercepts = get_slopes_and_intercepts(points)
 
 
 slopeAvg = 0
