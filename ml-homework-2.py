@@ -22,7 +22,7 @@ points.sort()
 
 def printPoints(points):    
     for i, (x, y) in enumerate(points):
-        print(f"x[ {i}] = {x} y[ {i}] = {y}")
+        print(f"x[ {i}] = {x:.2f} y[ {i}] = {y:.2f}")
 
 def get_slopes_and_intercepts(points):
     slopes, intercepts = [], []
